@@ -1,0 +1,11 @@
+node_modules
+.next
+out
+public
+package.json
+package-lock.json
+yarn.lock
+.next
+.vscode
+*.md
+*.mdx
