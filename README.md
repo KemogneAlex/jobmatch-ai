@@ -1,87 +1,191 @@
-# Welcome to React Router!
+<div align="center">
+  <img src="./public/images/image1.png" alt="JobMatch-AI" width="400" />
+  <img src="./public/images/image2.png" alt="Interface JobMatch-AI" width="400" />
+  
+  <h1>JobMatch-AI</h1>
+  <p align="center">
+    <strong>L'IA qui révolutionne le recrutement en analysant et évaluant les CV avec précision</strong>
+  </p>
+  
+  <p align="center">
+    <a href="https://jobmatch-ai-000z2.puter.site/" target="_blank">
+      <img src="https://img.shields.io/badge/🌐-Visiter%20le%20site-brightgreen?style=for-the-badge" alt="Visiter le site">
+    </a>
+    <a href="https://github.com/KemogneAlex/jobmatch-ai" target="_blank">
+      <img src="https://img.shields.io/badge/💻-Code%20Source-24292e?style=for-the-badge&logo=github" alt="Code Source">
+    </a>
+  </p>
+  
+  <p align="center">
+    <img src="https://img.shields.io/badge/React-61DAFB?style=flat&logo=react&logoColor=white" alt="React">
+    <img src="https://img.shields.io/badge/TypeScript-007ACC?style=flat&logo=typescript&logoColor=white" alt="TypeScript">
+    <img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=flat&logo=tailwind-css&logoColor=white" alt="Tailwind CSS">
+    <img src="https://img.shields.io/badge/Puter-FF6B00?style=flat&logo=putty&logoColor=white" alt="Puter AI">
+  </p>
 
-A modern, production-ready template for building full-stack React applications using React Router.
+  *Transformez vos CV en opportunités professionnelles avec l'analyse IA avancée*
+</div>
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/remix-run/react-router-templates/tree/main/default)
+## ✨ Fonctionnalités Principales
 
-## Features
+### 📊 Analyse Complète des CV
+- **Évaluation ATS** : Détection des mots-clés et optimisation pour les systèmes de suivi des candidats
+- **Score global** : Note sur 100 avec indicateurs visuels clairs
+- **Analyse détaillée** par catégorie :
+  - Structure et mise en page
+  - Contenu et pertinence
+  - Compétences techniques
+  - Style et ton
 
-- 🚀 Server-side rendering
-- ⚡️ Hot Module Replacement (HMR)
-- 📦 Asset bundling and optimization
-- 🔄 Data loading and mutations
-- 🔒 TypeScript by default
-- 🎉 TailwindCSS for styling
-- 📖 [React Router docs](https://reactrouter.com/)
+### 🚀 Gestion Intuitive
+- **Tableau de bord** : Vue d'ensemble de tous vos CV
+- **Téléchargement simple** : Glissez-déposez vos fichiers PDF
+- **Recherche rapide** : Trouvez facilement vos CV
+- **Suppression sécurisée** : Gestion individuelle ou groupée des documents
 
-## Getting Started
+### 🔒 Sécurité des Données
+- Chiffrement des données sensibles
+- Authentification sécurisée
+- Stockage cloud privé avec Puter
 
-### Installation
 
-Install the dependencies:
+## 🛠️ Installation
 
-```bash
-npm install
+### Prérequis
+- Node.js 16+
+- npm ou yarn
+- Compte Puter (pour le stockage cloud)
+
+### Instructions d'installation
+
+1. **Cloner le dépôt**
+   ```bash
+   git clone https://github.com/KemogneAlex/jobmatch-ai.git
+   cd jobmatch-ai
+   ```
+
+2. **Installer les dépendances**
+   ```bash
+   npm install
+   # ou
+   yarn
+   ```
+
+3. **Lancer l'application**
+   ```bash
+   npm run dev
+   # ou
+   yarn dev
+   ```
+
+5. **Accéder à l'application**
+   Ouvrez [http://localhost:5173](http://localhost:5173) dans votre navigateur.
+
+## 🖥️ Technologies Utilisées
+
+### Frontend
+- **React 18** avec Hooks
+- **TypeScript** pour un code robuste
+- **Vite** pour un développement ultra-rapide
+- **Tailwind CSS** pour un design moderne et responsive
+- **React Router** pour la navigation
+
+### Backend & Stockage
+- **Puter** pour le stockage cloud sécurisé
+- **PDF.js** pour le traitement des fichiers PDF
+- **React Hot Toast** pour les notifications utilisateur
+
+### Outils de Développement
+- **ESLint** et **Prettier** pour la qualité du code
+- **Git** pour le contrôle de version
+- **Vite Plugin PWA** pour une expérience application native
+
+## 📂 Structure du projet
+
+Voici une vue d'ensemble de l'architecture du projet :
+
+```
+jobmatch-ai/
+├── app/                    # Dossier principal de l'application
+│   ├── components/         # Composants React réutilisables
+│   │   ├── Navbar.tsx      # Barre de navigation principale
+│   │   ├── ResumeCard.tsx  # Carte d'affichage des CV
+│   │   ├── ScoreCircle.tsx # Composant de score visuel
+│   │   └── ...             # Autres composants
+│   │
+│   ├── lib/                # Utilitaires et logique métier
+│   │   ├── openai.ts       # Configuration et appels à l'API OpenAI
+│   │   └── puter.ts        # Configuration de Puter
+│   │
+│   ├── routes/             # Routes de l'application
+│   │   ├── home.tsx        # Page d'accueil
+│   │   ├── upload.tsx      # Page de téléchargement de CV
+│   │   ├── resume.$id.tsx  # Détail d'un CV
+│   │   └── wipe.tsx        # Nettoyage des données
+│   │
+│   ├── types/              # Définitions TypeScript
+│   │   └── index.ts        # Types globaux de l'application
+│   │
+│   ├── app.css             # Styles globaux
+│   ├── root.tsx            # Point d'entrée de l'application
+│   └── routes.ts           # Configuration des routes
+│
+├── public/                 # Fichiers statiques
+│   ├── images/             # Dossier des images
+│   │   ├── image1.png      # Capture d'écran 1
+│   │   ├── image2.png      # Capture d'écran 2
+│   │   ├── pdf.png         # Icône PDF
+│   │   └── resume_*.png    # Autres captures d'écran
+│   ├── icons/              # Icônes de l'application
+│   ├── pdf.worker.min.mjs  # Worker pour le traitement PDF
+│   └── favicon.ico         # Icône du site
+│
+├── constants/              # Constantes de l'application
+├── types/                  # Types globaux
+├── package.json            # Dépendances et scripts
+└── tsconfig.json           # Configuration TypeScript
 ```
 
-### Development
+### 🏗️ Architecture technique
 
-Start the development server with HMR:
+- **Frontend** : Application React avec TypeScript
+- **Styling** : Tailwind CSS pour un design moderne et réactif
+- **Gestion d'état** : Contexte React et hooks personnalisés
+- **Routage** : React Router pour la navigation
+- **Déploiement** : Application statique déployée sur Puter
 
-```bash
-npm run dev
-```
+## 🚀 Déploiement
 
-Your application will be available at `http://localhost:5173`.
-
-## Building for Production
-
-Create a production build:
-
+### Pour la production
 ```bash
 npm run build
+# ou
+yarn build
 ```
 
-## Deployment
+### Services recommandés
+- **Puter** pour un déploiement rapide et simple (utilisé actuellement)
+- **Vercel** pour l'hébergement frontend
+- **Netlify** pour un déploiement simple avec des fonctions serverless
+- **GitHub Pages** pour une solution gratuite
 
-### Docker Deployment
+## 📄 Licence
 
-To build and run using Docker:
+Ce projet est sous licence [MIT](LICENSE).
 
-```bash
-docker build -t my-app .
+## 📧 Contact
 
-# Run the container
-docker run -p 3000:3000 my-app
-```
+Pour toute question ou demande d'information, n'hésitez pas à me contacter :
 
-The containerized application can be deployed to any platform that supports Docker, including:
+📧 Email : kemognemalone@gmail.com
 
-- AWS ECS
-- Google Cloud Run
-- Azure Container Apps
-- Digital Ocean App Platform
-- Fly.io
-- Railway
+🔗 Lien du dépôt : [https://github.com/KemogneAlex/jobmatch-ai](https://github.com/KemogneAlex/jobmatch-ai)
 
-### DIY Deployment
-
-If you're familiar with deploying Node applications, the built-in app server is production-ready.
-
-Make sure to deploy the output of `npm run build`
-
-```
-├── package.json
-├── package-lock.json (or pnpm-lock.yaml, or bun.lockb)
-├── build/
-│   ├── client/    # Static assets
-│   └── server/    # Server-side code
-```
-
-## Styling
-
-This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever CSS framework you prefer.
+🌐 Application en ligne : [https://jobmatch-ai-000z2.puter.site/](https://jobmatch-ai-000z2.puter.site/)
 
 ---
 
-Built with ❤️ using React Router.
+<div align="center">
+  <p>Fait avec ❤️ par KEMOGNE</p>
+  <p>© 2025 JobMatch-AI - Tous droits réservés</p>
+</div>
