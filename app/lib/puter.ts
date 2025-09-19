@@ -101,7 +101,7 @@ export const usePuterStore = create<PuterStore>((set, get) => {
   const checkAuthStatus = async (): Promise<boolean> => {
     const puter = getPuter();
     if (!puter) {
-      setError('Puter.js not available');
+      setError('Puter.js n\'est pas disponible');
       return false;
     }
 
@@ -140,7 +140,7 @@ export const usePuterStore = create<PuterStore>((set, get) => {
         return false;
       }
     } catch (err) {
-      const msg = err instanceof Error ? err.message : 'Failed to check auth status';
+      const msg = err instanceof Error ? err.message : 'Échec de la vérification de l\'authentification';
       setError(msg);
       return false;
     }
@@ -149,7 +149,7 @@ export const usePuterStore = create<PuterStore>((set, get) => {
   const signIn = async (): Promise<void> => {
     const puter = getPuter();
     if (!puter) {
-      setError('Puter.js not available');
+      setError('Puter.js n\'est pas disponible');
       return;
     }
 
@@ -159,7 +159,7 @@ export const usePuterStore = create<PuterStore>((set, get) => {
       await puter.auth.signIn();
       await checkAuthStatus();
     } catch (err) {
-      const msg = err instanceof Error ? err.message : 'Sign in failed';
+      const msg = err instanceof Error ? err.message : 'Échec de la connexion';
       setError(msg);
     }
   };
@@ -167,7 +167,7 @@ export const usePuterStore = create<PuterStore>((set, get) => {
   const signOut = async (): Promise<void> => {
     const puter = getPuter();
     if (!puter) {
-      setError('Puter.js not available');
+      setError('Puter.js n\'est pas disponible');
       return;
     }
 
@@ -188,7 +188,7 @@ export const usePuterStore = create<PuterStore>((set, get) => {
         isLoading: false,
       });
     } catch (err) {
-      const msg = err instanceof Error ? err.message : 'Sign out failed';
+      const msg = err instanceof Error ? err.message : 'Échec de la déconnexion';
       setError(msg);
     }
   };
@@ -196,7 +196,7 @@ export const usePuterStore = create<PuterStore>((set, get) => {
   const refreshUser = async (): Promise<void> => {
     const puter = getPuter();
     if (!puter) {
-      setError('Puter.js not available');
+      setError('Puter.js n\'est pas disponible');
       return;
     }
 
@@ -217,7 +217,7 @@ export const usePuterStore = create<PuterStore>((set, get) => {
         isLoading: false,
       });
     } catch (err) {
-      const msg = err instanceof Error ? err.message : 'Failed to refresh user';
+      const msg = err instanceof Error ? err.message : 'Échec du rafraîchissement de l\'utilisateur';
       setError(msg);
     }
   };
@@ -241,7 +241,7 @@ export const usePuterStore = create<PuterStore>((set, get) => {
     setTimeout(() => {
       clearInterval(interval);
       if (!getPuter()) {
-        setError('Puter.js failed to load within 10 seconds');
+        setError('Échec du chargement de Puter.js dans les délais (10 secondes)');
       }
     }, 10000);
   };
@@ -249,7 +249,7 @@ export const usePuterStore = create<PuterStore>((set, get) => {
   const write = async (path: string, data: string | File | Blob) => {
     const puter = getPuter();
     if (!puter) {
-      setError('Puter.js not available');
+      setError('Puter.js n\'est pas disponible');
       return;
     }
     return puter.fs.write(path, data);
@@ -258,7 +258,7 @@ export const usePuterStore = create<PuterStore>((set, get) => {
   const readDir = async (path: string) => {
     const puter = getPuter();
     if (!puter) {
-      setError('Puter.js not available');
+      setError('Puter.js n\'est pas disponible');
       return;
     }
     return puter.fs.readdir(path);
@@ -267,7 +267,7 @@ export const usePuterStore = create<PuterStore>((set, get) => {
   const readFile = async (path: string) => {
     const puter = getPuter();
     if (!puter) {
-      setError('Puter.js not available');
+      setError('Puter.js n\'est pas disponible');
       return;
     }
     return puter.fs.read(path);
@@ -276,7 +276,7 @@ export const usePuterStore = create<PuterStore>((set, get) => {
   const upload = async (files: File[] | Blob[]) => {
     const puter = getPuter();
     if (!puter) {
-      setError('Puter.js not available');
+      setError('Puter.js n\'est pas disponible');
       return;
     }
     return puter.fs.upload(files);
@@ -285,7 +285,7 @@ export const usePuterStore = create<PuterStore>((set, get) => {
   const deleteFile = async (path: string) => {
     const puter = getPuter();
     if (!puter) {
-      setError('Puter.js not available');
+      setError('Puter.js n\'est pas disponible');
       return;
     }
     return puter.fs.delete(path);
@@ -299,7 +299,7 @@ export const usePuterStore = create<PuterStore>((set, get) => {
   ) => {
     const puter = getPuter();
     if (!puter) {
-      setError('Puter.js not available');
+      setError('Puter.js n\'est pas disponible');
       return;
     }
     // return puter.ai.chat(prompt, imageURL, testMode, options);
@@ -309,7 +309,7 @@ export const usePuterStore = create<PuterStore>((set, get) => {
   const feedback = async (path: string, message: string) => {
     const puter = getPuter();
     if (!puter) {
-      setError('Puter.js not available');
+      setError('Puter.js n\'est pas disponible');
       return;
     }
 
@@ -336,7 +336,7 @@ export const usePuterStore = create<PuterStore>((set, get) => {
   const img2txt = async (image: string | File | Blob, testMode?: boolean) => {
     const puter = getPuter();
     if (!puter) {
-      setError('Puter.js not available');
+      setError('Puter.js n\'est pas disponible');
       return;
     }
     return puter.ai.img2txt(image, testMode);
@@ -345,7 +345,7 @@ export const usePuterStore = create<PuterStore>((set, get) => {
   const getKV = async (key: string) => {
     const puter = getPuter();
     if (!puter) {
-      setError('Puter.js not available');
+      setError('Puter.js n\'est pas disponible');
       return;
     }
     return puter.kv.get(key);
@@ -354,7 +354,7 @@ export const usePuterStore = create<PuterStore>((set, get) => {
   const setKV = async (key: string, value: string) => {
     const puter = getPuter();
     if (!puter) {
-      setError('Puter.js not available');
+      setError('Puter.js n\'est pas disponible');
       return;
     }
     return puter.kv.set(key, value);
@@ -363,7 +363,7 @@ export const usePuterStore = create<PuterStore>((set, get) => {
   const deleteKV = async (key: string) => {
     const puter = getPuter();
     if (!puter) {
-      setError('Puter.js not available');
+      setError('Puter.js n\'est pas disponible');
       return;
     }
     return puter.kv.delete(key);
@@ -372,7 +372,7 @@ export const usePuterStore = create<PuterStore>((set, get) => {
   const listKV = async (pattern: string, returnValues?: boolean) => {
     const puter = getPuter();
     if (!puter) {
-      setError('Puter.js not available');
+      setError('Puter.js n\'est pas disponible');
       return;
     }
     if (returnValues === undefined) {
@@ -384,7 +384,7 @@ export const usePuterStore = create<PuterStore>((set, get) => {
   const flushKV = async () => {
     const puter = getPuter();
     if (!puter) {
-      setError('Puter.js not available');
+      setError('Puter.js n\'est pas disponible');
       return;
     }
     return puter.kv.flush();

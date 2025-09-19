@@ -9,6 +9,7 @@ import {
 
 import { useEffect } from 'react';
 import { usePuterStore } from '~/lib/puter';
+import { Toaster } from 'react-hot-toast';
 import type { Route } from './+types/root';
 import './app.css';
 
@@ -43,6 +44,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <body>
         <script src='https://js.puter.com/v2/'></script>
         {children}
+        <Toaster position="bottom-right" />
         <ScrollRestoration />
         <Scripts />
       </body>
