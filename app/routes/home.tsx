@@ -50,10 +50,40 @@ export function meta({}: Route.MetaArgs) {
 }
 
 export default function Home() {
-  const { auth, kv } = usePuterStore();
+  const { auth, kv, fs } = usePuterStore();
   const navigate = useNavigate();
   const [resumes, setResumes] = useState<Resume[]>([]);
   const [loadingResumes, setLoadingResumes] = useState(false);
+  
+  const deleteResume = async (id: string): Promise<void> => {
+    try {
+      // Supprimer le CV du stockage KV
+      await kv.delete(`resume:${id}`);
+      
+      // Mettre à jour l'état local pour refléter la suppression
+      setResumes(prevResumes => prevResumes.filter(resume => resume.id !== id));
+      
+      // Supprimer les fichiers associés s'ils existent
+      try {
+        const resume = resumes.find(r => r.id === id);
+        if (resume) {
+          if (resume.imagePath && !resume.imagePath.startsWith('http') && !resume.imagePath.startsWith('/images/')) {
+            await fs.delete(resume.imagePath).catch(console.error);
+          }
+          if (resume.resumePath) {
+            await fs.delete(resume.resumePath).catch(console.error);
+          }
+        }
+      } catch (error) {
+        console.error('Erreur lors de la suppression des fichiers associés :', error);
+      }
+      
+      return;
+    } catch (error) {
+      console.error('Erreur lors de la suppression du CV :', error);
+      throw error;
+    }
+  };
 
   useEffect(() => {
     if (!auth.isAuthenticated) navigate('/auth?next=/');
@@ -104,7 +134,11 @@ export default function Home() {
         {!loadingResumes && resumes.length > 0 && (
           <div className='resumes-section'>
             {resumes.map((resume) => (
-              <ResumeCard key={resume.id} resume={resume} />
+              <ResumeCard 
+                key={resume.id} 
+                resume={resume} 
+                onDelete={deleteResume}
+              />
             ))}
           </div>
         )}

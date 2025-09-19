@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router';
 import { usePuterStore } from '~/lib/puter';
-import toast from 'react-hot-toast';
 
 const WipeApp = () => {
   const { auth, isLoading, error, clearError, fs, ai, kv } = usePuterStore();
@@ -30,51 +30,64 @@ const WipeApp = () => {
 
   const handleDelete = async () => {
     const confirmDelete = await new Promise<boolean>((resolve) => {
-      toast.custom((t) => (
-        <div className={`${t.visible ? 'animate-enter' : 'animate-leave'}
-          max-w-md w-full bg-white shadow-lg rounded-lg pointer-events-auto flex ring-1 ring-black ring-opacity-5`}>
-          <div className="flex-1 w-0 p-4">
-            <div className="flex items-start">
-              <div className="flex-shrink-0 pt-0.5">
-                <svg className="h-6 w-6 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-                </svg>
-              </div>
-              <div className="ml-3 flex-1">
-                <p className="text-sm font-medium text-gray-900">
-                  Confirmer la suppression
-                </p>
-                <p className="mt-1 text-sm text-gray-500">
-                  Êtes-vous sûr de vouloir supprimer toutes les données ? Cette action est irréversible.
-                </p>
+      toast.custom(
+        (t) => (
+          <div
+            className={`${t.visible ? 'animate-enter' : 'animate-leave'} ring-opacity-5 pointer-events-auto flex w-full max-w-md rounded-lg bg-white shadow-lg ring-1 ring-black`}
+          >
+            <div className='w-0 flex-1 p-4'>
+              <div className='flex items-start'>
+                <div className='flex-shrink-0 pt-0.5'>
+                  <svg
+                    className='h-6 w-6 text-red-500'
+                    fill='none'
+                    viewBox='0 0 24 24'
+                    stroke='currentColor'
+                  >
+                    <path
+                      strokeLinecap='round'
+                      strokeLinejoin='round'
+                      strokeWidth={2}
+                      d='M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z'
+                    />
+                  </svg>
+                </div>
+                <div className='ml-3 flex-1'>
+                  <p className='text-sm font-medium text-gray-900'>Confirmer la suppression</p>
+                  <p className='mt-1 text-sm text-gray-500'>
+                    Êtes-vous sûr de vouloir supprimer toutes les données ? Cette action est
+                    irréversible.
+                  </p>
+                </div>
               </div>
             </div>
+            <div className='flex border-l border-gray-200'>
+              <button
+                onClick={() => {
+                  toast.dismiss(t.id);
+                  resolve(false);
+                }}
+                className='flex w-full cursor-pointer items-center justify-center rounded-none rounded-r-lg border border-transparent p-4 text-sm font-medium text-indigo-600 hover:text-indigo-500 focus:ring-2 focus:ring-indigo-500 focus:outline-none'
+              >
+                Annuler
+              </button>
+              <button
+                onClick={() => {
+                  toast.dismiss(t.id);
+                  resolve(true);
+                }}
+                className='flex w-full cursor-pointer items-center justify-center rounded-none rounded-r-lg border border-transparent p-4 text-sm font-medium text-red-600 hover:text-red-500 focus:ring-2 focus:ring-red-500 focus:outline-none'
+              >
+                Supprimer
+              </button>
+            </div>
           </div>
-          <div className="flex border-l border-gray-200">
-            <button
-              onClick={() => {
-                toast.dismiss(t.id);
-                resolve(false);
-              }}
-              className="w-full border border-transparent rounded-none rounded-r-lg p-4 flex items-center justify-center text-sm font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 cursor-pointer"
-            >
-              Annuler
-            </button>
-            <button
-              onClick={() => {
-                toast.dismiss(t.id);
-                resolve(true);
-              }}
-              className="w-full border border-transparent rounded-none rounded-r-lg p-4 flex items-center justify-center text-sm font-medium text-red-600 hover:text-red-500 focus:outline-none focus:ring-2 focus:ring-red-500 cursor-pointer"
-            >
-              Supprimer
-            </button>
-          </div>
-        </div>
-      ), {
-        duration: Infinity, // La modale ne disparaît pas automatiquement
-        position: 'top-center',
-      });
+        ),
+        {
+          duration: Infinity, // La modale ne disparaît pas automatiquement
+          position: 'top-center',
+        }
+      );
     });
 
     if (!confirmDelete) return;
@@ -209,7 +222,7 @@ const WipeApp = () => {
                   type='button'
                   onClick={handleDelete}
                   disabled={isDeleting}
-                  className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 cursor-pointer"
+                  className='inline-flex cursor-pointer items-center rounded-md border border-transparent bg-red-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-red-700 focus:ring-2 focus:ring-red-500 focus:ring-offset-2 focus:outline-none'
                 >
                   {isDeleting ? (
                     <>
